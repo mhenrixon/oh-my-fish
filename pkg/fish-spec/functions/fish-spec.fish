@@ -15,7 +15,17 @@ function fish-spec
     set test_files $argv
   end
 
+  if not set -q test_files[1]
+    __fish_spec.color.echo.failure "fish-spec: no spec files found"
+    return 1
+  end
+
   for test_file in $test_files
+    if not test -f $test_file
+      __fish_spec.color.echo.failure "fish-spec: no such spec file: $test_file"
+      set __fish_spec_failed_assertions (math $__fish_spec_failed_assertions + 1)
+      continue
+    end
     __fish_spec_run_tests_in_file $test_file
   end
 
@@ -34,7 +44,12 @@ function __fish_spec_run_tests_in_file -a test_file
   set -g __fish_spec_last_assertion_failed no
 
   __fish_spec.color.echo.info "Running tests in $test_file..."
+  # fish < 4 returns non-zero when sourcing an empty file; that is not an error.
   source $test_file
+  if test $status -ne 0 -a -s $test_file
+    __fish_spec.color.echo.failure "fish-spec: could not load $test_file"
+    set __fish_spec_failed_assertions_in_file 1
+  end
 
   for suite in (functions | string match -r '^describe_.*')
     __fish_spec_run_tests_in_suite $suite

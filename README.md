@@ -213,6 +213,10 @@ like so: `fish-spec tests/test_*.fish other-tests/foo.fish`
 For syntax and available assertions see the tests for the fish-spec package in
 [pkg/fish-spec/spec/](https://github.com/oh-my-fish/oh-my-fish/tree/master/pkg/fish-spec/spec).
 
+To run Oh My Fish's own test suite, use `tests/run.fish`. It installs Oh My Fish into a temporary sandbox
+(a throwaway `HOME`), so your real configuration is never touched, then runs the smoke tests and every
+`spec/*_spec.fish` under `pkg/`. Pass spec files as arguments to run a subset.
+
 ## Creating Packages
 
 Oh My Fish uses an advanced and well defined plugin architecture to ease plugin development, including init/uninstall hooks, function and completion autoloading. [See the packages documentation](docs/en-US/Packages.md) for more details.

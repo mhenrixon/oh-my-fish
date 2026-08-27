@@ -1,51 +1,47 @@
 function describe_basic_tests
-  function before_all
-    set -gx CI WORKAROUND
-  end
-
-  function before_all
-    set -e CI
-  end
-
   function it_has_a_help_command
     set -l output (omf help)
-    echo $output | grep -Eq "cd.+Change to root or package directory"
-    echo $output | grep -Eq "channel.+Get or change the update channel"
-    echo $output | grep -Eq "describe.+Show information about a package"
-    echo $output | grep -Eq "destroy.+Uninstall Oh My Fish"
-    echo $output | grep -Eq "doctor.+Troubleshoot Oh My Fish"
-    echo $output | grep -Eq "help.+Shows help about a command"
-    echo $output | grep -Eq "install.+Install one or more packages"
-    echo $output | grep -Eq "list.+List installed packages"
-    echo $output | grep -Eq "new.+Create a new package from a template"
-    echo $output | grep -Eq "reload.+Reload the current shell"
-    echo $output | grep -Eq "remove.+Remove a package"
-    echo $output | grep -Eq "repositories.+Manage package repositories"
-    echo $output | grep -Eq "search.+Search for a package or theme"
-    echo $output | grep -Eq "theme.+Activate and list available themes"
-    echo $output | grep -Eq "update.+Update Oh My Fish"
-    echo $output | grep -Eq "version.+Display version and exit"
-    assert 0 = $status
+    assert_exit_code 0
+    # Help output highlights the short alias of each command with color
+    # codes (e.g. "d" in "describe"); strip them (including the terminfo
+    # reset "\e(B" some terminals emit) before matching.
+    set -l output (string replace -ra '\e(\[[0-9;]*m|\(B)' '' -- $output)
+    assert_match "cd.+Change to root or package directory" "$output"
+    assert_match "channel.+Get or change the update channel" "$output"
+    assert_match "describe.+Show information about a package" "$output"
+    assert_match "destroy.+Uninstall Oh My Fish" "$output"
+    assert_match "doctor.+Troubleshoot Oh My Fish" "$output"
+    assert_match "help.+Shows help about a command" "$output"
+    assert_match "install.+Install one or more packages" "$output"
+    assert_match "list.+List installed packages" "$output"
+    assert_match "new.+Create a new package from a template" "$output"
+    assert_match "reload.+Reload the current shell" "$output"
+    assert_match "remove.+Remove a package" "$output"
+    assert_match "repositories.+Manage package repositories" "$output"
+    assert_match "search.+Search for a package or theme" "$output"
+    assert_match "theme.+Activate and list available themes" "$output"
+    assert_match "update.+Update Oh My Fish" "$output"
+    assert_match "version.+Display version and exit" "$output"
   end
 
   function it_has_a_doctor_command
     set -l output (omf doctor)
-    assert 0 = $status
-    assert -n (echo $output | grep "Oh My Fish version")
-    assert -n (echo $output | grep "Checking for a sane environment...")
+    assert_exit_code 0
+    assert_match "Oh My Fish version" "$output"
+    assert_match "Checking for a sane environment..." "$output"
   end
 
   function it_installs_packages
     set -l remove_output (omf remove apt 2> /dev/null)
     set -l install_output (omf install apt)
-    assert 0 = $status
-    assert -n (echo $install_output | grep "apt successfully installed.")
+    assert_exit_code 0
+    assert_match "apt successfully installed." "$install_output"
   end
 
   function it_removes_packages
     set -l install_output (omf install apt 2> /dev/null)
     set -l remove_output (omf remove apt)
-    assert 0 = $status
-    assert -n (echo $remove_output | grep -q "apt successfully removed.")
+    assert_exit_code 0
+    assert_match "apt successfully removed." "$remove_output"
   end
 end
