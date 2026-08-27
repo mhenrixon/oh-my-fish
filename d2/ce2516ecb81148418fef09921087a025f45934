@@ -1,0 +1,24 @@
+pkg/omf/functions/core/omf.doctor.fish
+  s_876b5b701fe85c::t_56a1682bd1769a 37-39,59,61
+pkg/omf/functions/packages/omf.packages.name.fish
+  s_876b5b701fe85c::t_e65623f7994781 5-6
+  s_876b5b701fe85c::t_56a1682bd1769a 1-2,4
+pkg/omf/functions/bundle/omf.bundle.names.fish
+  s_876b5b701fe85c::t_56a1682bd1769a 5-7
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "d2ce2516ecb81148418fef09921087a025f45934",
+  "prompts": {},
+  "sessions": {
+    "s_876b5b701fe85c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e0778b7d-5af2-48ab-b06d-a23fbdd2da3c",
+        "model": "claude-fable-5"
+      },
+      "human_author": "mhenrixon <mikael@mhenrixon.com>"
+    }
+  }
+}
