@@ -1,0 +1,9 @@
+pkg/omf/functions/util/omf.check.fish_prompt.owned.fish
+  ai_agent 1-10
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "05a60df0f544dcc7edda6b2e4be358c4f38b6a37",
+  "prompts": {}
+}
