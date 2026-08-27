@@ -1,10 +1,10 @@
 function omf.cli.list
   switch (count $argv)
   case 0
-    echo (set_color -u)Plugins(set_color normal)
+    echo (omf::under)Plugins(omf::off)
     omf.packages.list --plugin | column
     echo
-    echo (set_color -u)Themes(set_color normal)
+    echo (omf::under)Themes(omf::off)
     omf.packages.list --theme | column
   case '*'
     omf.packages.list $argv | column
