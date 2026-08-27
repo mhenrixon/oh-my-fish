@@ -42,6 +42,9 @@ function __fish_spec_run_tests_in_file -a test_file
 
   functions -e (functions | string match -r '^(describe_.*)$')
 
+  set __fish_spec_failed_assertions (math $__fish_spec_failed_assertions + $__fish_spec_failed_assertions_in_file)
+  set __fish_spec_total_assertions (math $__fish_spec_total_assertions + $__fish_spec_total_assertions_in_file)
+
   # File-level summary
   echo
   __fish_spec.color.echo.autocolor $__fish_spec_total_assertions_in_file $__fish_spec_failed_assertions_in_file "Summary for $test_file: $__fish_spec_total_assertions_in_file assertions, $__fish_spec_failed_assertions_in_file failed."
@@ -60,9 +63,6 @@ function __fish_spec_run_tests_in_suite -a suite
     __fish_spec_run_test_function $test_func
   end
 
-  set __fish_spec_failed_assertions (math $__fish_spec_failed_assertions + $__fish_spec_failed_assertions_in_file)
-  set __fish_spec_total_assertions (math $__fish_spec_total_assertions + $__fish_spec_total_assertions_in_file)
-
   if functions --query after_all
     after_all
   end
@@ -77,7 +77,7 @@ function __fish_spec_run_test_function -a test_func
 
   set -l before_each_output ""
   if functions --query before_each
-    before_each 2>1 | while read -l line; test -z "$before_each_output" && set before_each_output $line || set before_each_output $before_each_output\n$line; end
+    before_each 2>&1 | while read -l line; test -z "$before_each_output" && set before_each_output $line || set before_each_output $before_each_output\n$line; end
   end
 
   set -l test_func_output ""
