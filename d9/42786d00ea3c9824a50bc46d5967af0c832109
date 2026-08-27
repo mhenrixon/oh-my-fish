@@ -1,0 +1,29 @@
+pkg/omf/spec/basic_spec.fish
+  s_876b5b701fe85c::t_442327b5adbc3d 4,8-23,28-30,36-37,43-44
+  s_876b5b701fe85c::t_eb883836246d6a 5-7
+.github/actions/run-tests/action.yml
+  s_876b5b701fe85c::t_eb883836246d6a 11,13
+tests/run.fish
+  s_876b5b701fe85c::t_442327b5adbc3d 2-11,13-14,17-27,29-34,37,41,43-44,49-55,58
+  s_876b5b701fe85c::t_eb883836246d6a 38-40
+pkg/omf/spec/omf_list_spec.fish
+  s_876b5b701fe85c::t_442327b5adbc3d 14
+README.md
+  s_876b5b701fe85c::t_eb883836246d6a 216-219
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "d942786d00ea3c9824a50bc46d5967af0c832109",
+  "prompts": {},
+  "sessions": {
+    "s_876b5b701fe85c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e0778b7d-5af2-48ab-b06d-a23fbdd2da3c",
+        "model": "claude-fable-5"
+      },
+      "human_author": "mhenrixon <mikael@mhenrixon.com>"
+    }
+  }
+}
