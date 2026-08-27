@@ -1,0 +1,9 @@
+pkg/omf/spec/omf_theme_spec.fish
+  ai_agent 139,141
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "52953bd82bc5e090c3c2303df04b9805a1487991",
+  "prompts": {}
+}
