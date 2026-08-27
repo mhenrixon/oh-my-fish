@@ -1,0 +1,15 @@
+pkg/omf/functions/cli/omf.cli.list.fish
+  ai_agent 5,8,10
+pkg/omf/functions/cli/omf.cli.themes.list.fish
+  ai_agent 10,13
+pkg/omf/functions/util/omf.columns.fish
+  ai_agent 1-9
+pkg/omf/functions/cli/omf.cli.theme.fish
+  ai_agent 12,15
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "90a29953c904971cd454e463b8e2e90592a9380a",
+  "prompts": {}
+}
