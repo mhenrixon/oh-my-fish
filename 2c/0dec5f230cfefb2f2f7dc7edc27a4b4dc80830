@@ -1,0 +1,20 @@
+.github/workflows/build.yml
+  s_876b5b701fe85c::t_36dd31868af7d6 30,32
+  s_876b5b701fe85c::t_30b467b5533925 9-16,18-29,31,33-38,54-62,64,70,81,83,86
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "2c0dec5f230cfefb2f2f7dc7edc27a4b4dc80830",
+  "prompts": {},
+  "sessions": {
+    "s_876b5b701fe85c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e0778b7d-5af2-48ab-b06d-a23fbdd2da3c",
+        "model": "claude-fable-5"
+      },
+      "human_author": "mhenrixon <mikael@mhenrixon.com>"
+    }
+  }
+}
