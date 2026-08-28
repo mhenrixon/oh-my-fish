@@ -1,4 +1,7 @@
 function __fish_spec_undo_expected_failure
+  # Only undo when the preceding `assert_exit_code 1` succeeded, i.e. the
+  # assertion under test really did fail. Otherwise the failure is real.
+  test $status -eq 0; or return 1
   set __fish_spec_failed_assertions_in_file (math $__fish_spec_failed_assertions_in_file - 1)
   set __fish_spec_last_assertion_failed no
 end
@@ -68,6 +71,27 @@ function describe_assertions
     assert_not_match '^abc' abcdef
     assert_exit_code 1
     __fish_spec_undo_expected_failure
+  end
+
+  function it_assert_match_joins_multiple_arguments
+    set -l lines first second third
+    assert_match 'second' $lines
+    assert_exit_code 0
+    assert_match '^first second third$' $lines
+    assert_exit_code 0
+  end
+
+  function it_does_not_undo_a_real_failure
+    set -l failed_before $__fish_spec_failed_assertions_in_file
+    assert 1 = 1
+    assert_exit_code 1
+    __fish_spec_undo_expected_failure
+    assert_exit_code 1
+    # The wrongly expected failure above is genuine and must remain counted.
+    assert_equal (math $failed_before + 1) $__fish_spec_failed_assertions_in_file
+    # Undo it for real now that the bookkeeping has been verified.
+    set __fish_spec_failed_assertions_in_file (math $__fish_spec_failed_assertions_in_file - 1)
+    set __fish_spec_last_assertion_failed no
   end
 
   function it_assert_match_treats_arguments_as_data

@@ -1,6 +1,9 @@
 # Undo the bookkeeping of an assertion that was *expected* to fail, so a
 # deliberately failing assertion does not mark the test or the run as failed.
 function __fish_spec_undo_expected_failure
+  # Only undo when the preceding `assert_exit_code 1` succeeded, i.e. the
+  # assertion under test really did fail. Otherwise the failure is real.
+  test $status -eq 0; or return 1
   set __fish_spec_failed_assertions_in_file (math $__fish_spec_failed_assertions_in_file - 1)
   set __fish_spec_last_assertion_failed no
 end

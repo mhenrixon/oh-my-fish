@@ -74,14 +74,19 @@ function assert_false -a condition
     "Assertion failed: Expected false, but got \"$condition\"."
 end
 
-function assert_match -a pattern string
+# assert_match <pattern> <string>...
+# Everything after the pattern is joined with spaces, so an unquoted
+# multi-line command substitution is matched as a whole.
+function assert_match -a pattern
+  set -l string "$argv[2..-1]"
   string match -qr -- "$pattern" "$string"
   __fish_spec_assert_result $status \
     "Assertion string \"$string\" matches pattern \"$pattern\" passed!" \
     "Assertion failed: string \"$string\" does not match pattern \"$pattern\"."
 end
 
-function assert_not_match -a pattern string
+function assert_not_match -a pattern
+  set -l string "$argv[2..-1]"
   not string match -qr -- "$pattern" "$string"
   __fish_spec_assert_result $status \
     "Assertion string \"$string\" does not match pattern \"$pattern\" passed!" \

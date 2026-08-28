@@ -29,6 +29,11 @@ function fish-spec
     __fish_spec_run_tests_in_file $test_file
   end
 
+  if test $__fish_spec_total_assertions -eq 0
+    __fish_spec.color.echo.failure "fish-spec: no assertions ran"
+    set __fish_spec_failed_assertions 1
+  end
+
   # Global summary
   echo
   __fish_spec.color.echo.autocolor $__fish_spec_total_assertions $__fish_spec_failed_assertions "Test complete: $__fish_spec_total_assertions assertions run, $__fish_spec_failed_assertions failed."
