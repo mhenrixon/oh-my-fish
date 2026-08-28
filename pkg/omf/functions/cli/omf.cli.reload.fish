@@ -9,7 +9,7 @@ function omf.cli.reload
 end
 
 function __omf.cli.reload.job_warning
-  echo (set_color -u)"Reload aborted. There are background jobs:"(set_color normal)
+  echo (omf::under)"Reload aborted. There are background jobs:"(omf::off)
   echo
   jobs
   echo

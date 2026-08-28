@@ -1,4 +1,4 @@
-FROM ohmyfish/fish:2.5.0
+FROM ohmyfish/fish:4.8.0
 
 COPY . /src/oh-my-fish
 
