@@ -1,11 +1,11 @@
-pkg/fish-spec/framework/assertions.fish
-  ai_agent 77-81,88-89
+pkg/fish-spec/spec/results_spec.fish
+  ai_agent 4-6
 pkg/fish-spec/spec/assertions_spec.fish
   ai_agent 2-4,76-94
 pkg/fish-spec/functions/fish-spec.fish
   ai_agent 32-36
-pkg/fish-spec/spec/results_spec.fish
-  ai_agent 4-6
+pkg/fish-spec/framework/assertions.fish
+  ai_agent 77-81,88-89
 ---
 {
   "schema_version": "authorship/3.0.0",
