@@ -1,0 +1,22 @@
+pkg/omf/spec/omf_checks_spec.fish
+  s_876b5b701fe85c::t_d14141156c1f39 1-23,25-53,55-68,70,73-75,77-96
+  s_876b5b701fe85c::t_9e80e695aa8fec 69,71-72
+pkg/omf/functions/util/omf.check.fish_prompt.fish
+  s_876b5b701fe85c::t_a996a7011ac334 7,19-20
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "5fde65dd462b4d0964417edb493f698824399e2e",
+  "prompts": {},
+  "sessions": {
+    "s_876b5b701fe85c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e0778b7d-5af2-48ab-b06d-a23fbdd2da3c",
+        "model": "claude-fable-5"
+      },
+      "human_author": "mhenrixon <mikael@mhenrixon.com>"
+    }
+  }
+}
