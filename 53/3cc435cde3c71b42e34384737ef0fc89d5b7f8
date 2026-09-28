@@ -1,0 +1,9 @@
+pkg/omf/functions/cli/omf.cli.theme.fish
+  s_876b5b701fe85c::t_a996a7011ac334 24
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "533cc435cde3c71b42e34384737ef0fc89d5b7f8",
+  "prompts": {}
+}
