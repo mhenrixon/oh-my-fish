@@ -1,0 +1,20 @@
+bin/install
+  s_876b5b701fe85c::t_50b43ecc804488 11,15,27,197,253,255-256,357,381,385,393,494,499,575,597-605,608,610,612-614,673
+  s_876b5b701fe85c::t_e1ccf685d75c9d 254
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "d2a03bf4cf9f95e0aa39c60163b5c19549d7ae97",
+  "prompts": {},
+  "sessions": {
+    "s_876b5b701fe85c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e0778b7d-5af2-48ab-b06d-a23fbdd2da3c",
+        "model": "claude-fable-5"
+      },
+      "human_author": "mhenrixon <mikael@mhenrixon.com>"
+    }
+  }
+}
